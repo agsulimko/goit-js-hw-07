@@ -2,7 +2,7 @@ import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
 const gallery = document.querySelector(`.gallery`);
-console.log(gallery);
+// console.log(gallery);
 
 
 
@@ -12,13 +12,13 @@ const markup = galleryItems
   
 gallery.insertAdjacentHTML("afterbegin", markup);
  
-console.log(gallery);
+// console.log(gallery);
 
 
 const handleClick = (event) => {
   const { target } = event;
     event.preventDefault();
-  if (!target.tagName === "IMG") {
+  if (!target.nodName === "IMG") {
     return;
   }
   console.log(target);    
@@ -30,8 +30,11 @@ const handleClick = (event) => {
 // console.log(imgIndex);
 // console.log(galleryItems[imgIndex].original); 
         
- const instance = basicLightbox.create(`<img src="${source}" width="800" height="600">`);
-  instance.show(); 
+ const instance = basicLightbox.create(`<img src="${source}" width="800" height="600">`,{
+		onShow: (instance) => console.log('onShow', instance),
+		onClose: (instance) => console.log('onClose', instance)
+	} );
+  instance.show((instance) => console.log('finished show()', instance));
   
   // Закрытие модалки клавиш. 'Escape'
 document.addEventListener("keydown", keydownEscape); 
@@ -39,7 +42,6 @@ document.addEventListener("keydown", keydownEscape);
 function keydownEscape(evt) {
         console.log("Keydown: ", evt.key);
   if (evt.key === 'Escape' || !instance) {
-           console.log("Yes! ");
           instance.close();
           // instance = null;
         }; 
