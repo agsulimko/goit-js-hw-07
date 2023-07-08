@@ -40,8 +40,8 @@ const handleClick = (event) => {
 document.addEventListener("keydown", keydownEscape); 
       
 function keydownEscape(evt) {
-        console.log("Keydown: ", evt.key);
-  if (evt.key === 'Escape' || !instance) {
+        console.log("Keydown: ", evt.code);
+  if (evt.code === 'Escape' || !instance) {
           instance.close();
           // instance = null;
         }; 
