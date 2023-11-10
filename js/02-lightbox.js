@@ -21,5 +21,5 @@ console.log(gallery);
    captionDelay: 250,
   
 });
-  export const string = "Hello";
+  
 
